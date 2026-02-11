@@ -3,6 +3,8 @@ package test;
 
 import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.ValueSource;
 
 public class UnitTests {
 
@@ -16,8 +18,21 @@ public class UnitTests {
         int sum = i + j;
 
         // Assert
-        assertEquals(3, sum);
+        assertEquals(4, sum);
         
+    }
+
+    @ParameterizedTest
+    @ValueSource(ints = {1, 2, 3})
+    public void testParams(int i) {
+        // Arrange
+        int j = 0; 
+
+        // Act
+        int sum = i + j;
+
+        // Assert
+        assertEquals(2, sum);
     }
 
 }
