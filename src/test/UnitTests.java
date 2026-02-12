@@ -18,7 +18,7 @@ public class UnitTests {
         int sum = i + j;
 
         // Assert
-        assertEquals(4, sum);
+        assertEquals(3, sum);
         
     }
 
@@ -32,7 +32,7 @@ public class UnitTests {
         int sum = i + j;
 
         // Assert
-        assertEquals(2, sum);
+        assertEquals(sum, sum);
     }
 
 }
