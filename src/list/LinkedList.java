@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 package list;
 
 import org.junit.Test;
@@ -33,4 +34,34 @@ public class LinkedList<T> implements List<T> {
           size++;
           
      }
+=======
+
+package list;
+
+public class LinkedList<T> implements List<T> {
+
+    private int size;
+
+    public LinkedList() {
+        this.size = 0;
+    }
+
+
+    @Override 
+    public int size() {
+        return this.size;
+    }
+
+    @Override 
+    public boolean isEmpty() {
+        return (size == 0);
+    }
+
+    @Override
+    public void add(T element) {
+        size++;
+    }
+
+
+>>>>>>> 0d500c264eb1b541d05cd79a581c0835eda15a7d
 }
