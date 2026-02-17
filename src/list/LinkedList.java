@@ -1,7 +1,7 @@
 
 package list;
 
-public class LinkedList<T> implements List<T> {
+public class LinkedList<T extends Comparable<T>> implements List<T> {
 
     private static class Node<T> {
         public T data;
@@ -79,6 +79,12 @@ public class LinkedList<T> implements List<T> {
         s += ", head: " + head.toString();
         s += ", tail: " + tail.toString();
         return s;
+    }
+
+    @Override
+    public T get(int i) {
+        // TODO Auto-generated method stub
+        throw new UnsupportedOperationException("Unimplemented method 'get'");
     }
 
 }
