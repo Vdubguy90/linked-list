@@ -224,6 +224,7 @@ public class ListTests {
         assertEquals(1, nodesAfterC);
         assertEquals(0, nodesAfterD);
     }
+    
 
     @Test
     public void testCompares() {
