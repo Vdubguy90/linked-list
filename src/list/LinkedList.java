@@ -249,4 +249,67 @@ public class LinkedList<T extends Comparable<T>> implements List<T> {
 
     }
 
+    public void sort() {
+
+        head.next = mergeSort(head.next);
+
+        // update the tail?
+
+    }
+
+    private Node<T> mergeSort(Node<T> node) {
+
+        // base case
+        if (node == null || node.next == null) {
+            return node;
+        }
+
+        // recursive case
+
+        Node<T> middle = findMiddle(node);
+        Node<T> rightStart = middle.next;
+        middle.next = null;
+
+        Node<T> l = mergeSort(node);
+        Node<T> r = mergeSort(rightStart);
+
+        return merge(l, r);
+        
+
+    }
+
+    private Node<T> merge(Node<T> l, Node<T> r) {
+        Node<T> dummy = new Node<>();
+        Node<T> tailMerge = dummy;
+
+        while (l != null && r != null) {
+            if (l.data.compareTo(r.data) <= 0) {
+                tailMerge.next = l;
+                l = l.next;
+            } else {
+                tailMerge.next = r;
+                r = r.next;
+            }
+            tailMerge = tailMerge.next;
+        }
+        if (l != null) {
+            tailMerge.next = l;
+        } else if (r != null) {
+            tailMerge.next = r;
+        }
+
+        return dummy.next;
+    }
+
+    private Node<T> findMiddle(Node<T> start) {
+        Node<T> slow = start;
+        Node<T> fast = start;
+
+        while (fast.next != null && fast.next.next != null) {
+            slow = slow.next;
+            fast = fast.next.next;
+        }
+        return slow;
+    }
+
 }

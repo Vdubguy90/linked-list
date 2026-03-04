@@ -279,6 +279,40 @@ public class ListTests {
         assertEquals("[B, A] size = 2, head: null, tail: A", list2.toString());
         assertEquals("[false, true, true] size = 3, head: null, tail: true", list3.toString());
     }
-    
+
+
+    @Test 
+    public void testMergesort() {
+        // Arrange
+        List<String> list = new LinkedList<>();
+        list.addLast("A");
+        list.addLast("C");
+        list.addLast("B");
+        list.addLast("A");
+
+        // Act
+        list.sort();
+
+        // Assert
+        String expected = "[A, A, B, C] size = 4, head: null, tail: C";
+        String actual = list.toString();
+
+        assertEquals(expected, actual);
+
+    }
+
+    @Test 
+    public void testMergeSortEmptyList() {
+        // Arrange
+        List<Integer> intList = new LinkedList<>();
+
+        // Act
+        intList.sort();
+
+        // Assert
+        String expected = "[] size = 0, head: null, tail: null";
+        String actual = intList.toString();
+        assertEquals(expected, actual);
+    }
 
 }
