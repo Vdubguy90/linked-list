@@ -10,6 +10,7 @@ public interface List<T extends Comparable<T>> {
     void addAtIndex(int index, T element);
     T get(int i);
     int nodesAfter(T target);
+<<<<<<< HEAD
     void printList();
     void swapPairs();
 
@@ -17,5 +18,13 @@ public interface List<T extends Comparable<T>> {
      * Sort the list using Mergesort
      */
     void sort();
+=======
+
+    /**
+     * Sort the list using mergSort()
+     */
+    void sort();
+
+>>>>>>> fcdd794 (commit to merge)
 
 }

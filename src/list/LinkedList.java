@@ -11,12 +11,15 @@ public class LinkedList<T extends Comparable<T>> implements List<T> {
             this.data = data;
             this.next = next;
         }
+
         public Node() {
             this(null, null);
         }
+
         public Node(T data) {
             this(data, null);
         }
+
         @Override
         public String toString() {
             if (data == null) {
@@ -28,7 +31,7 @@ public class LinkedList<T extends Comparable<T>> implements List<T> {
     }
 
     private int size;
-    
+
     private Node<T> head;
     private Node<T> tail;
 
@@ -38,12 +41,12 @@ public class LinkedList<T extends Comparable<T>> implements List<T> {
         tail = head;
     }
 
-    @Override 
+    @Override
     public int size() {
         return this.size;
     }
 
-    @Override 
+    @Override
     public boolean isEmpty() {
         return (size == 0);
     }
@@ -62,7 +65,7 @@ public class LinkedList<T extends Comparable<T>> implements List<T> {
 
         // step 4
         size++;
-        
+
     }
 
     public void swapPairs() {
@@ -86,7 +89,6 @@ public class LinkedList<T extends Comparable<T>> implements List<T> {
 
             cur = cur.next.next;
         }
-        
 
     }
 
@@ -136,9 +138,9 @@ public class LinkedList<T extends Comparable<T>> implements List<T> {
     public T get(int index) {
 
         if (index >= size) {
-            //System.out.println("Index out of bounds");
-            //return null;
-             throw new IndexOutOfBoundsException("Index out of bounds");
+            // System.out.println("Index out of bounds");
+            // return null;
+            throw new IndexOutOfBoundsException("Index out of bounds");
         }
         if (index < 0) {
             return null;
@@ -179,10 +181,10 @@ public class LinkedList<T extends Comparable<T>> implements List<T> {
 
                 // step 3: temp reference to rest of list
                 Node<T> temp = cur.next;
-                
+
                 // step 4: add the new noe after cur
                 cur.next = newNode;
-                
+
                 // step 5: add the rest of the list back to new node
                 newNode.next = temp;
 
@@ -190,7 +192,6 @@ public class LinkedList<T extends Comparable<T>> implements List<T> {
                 size++;
 
             }
-
 
         }
 
@@ -200,6 +201,7 @@ public class LinkedList<T extends Comparable<T>> implements List<T> {
     public int nodesAfter(T target) {
         return nodesAfter(head.next, target);
     }
+
     private int nodesAfter(Node<T> node, T target) {
 
         // base case: not found
@@ -215,6 +217,7 @@ public class LinkedList<T extends Comparable<T>> implements List<T> {
         // recursive case
         return nodesAfter(node.next, target);
     }
+
     private int countNodes(Node<T> node) {
 
         // base case
@@ -226,27 +229,67 @@ public class LinkedList<T extends Comparable<T>> implements List<T> {
         return 1 + countNodes(node.next);
     }
 
-    public void printList() {
-        printList(head.next);
-    }
-    private void printList(Node<T> node) {
+    @Override
+    void sort() {
 
-        // System.out.println(node.data.toString());
+        head.next = mergeSort(head.next);
+
+        // update tail?
+    }
+
+    private Node<T> mergeSort(Node<T> node) {
 
         // base case
-        if (node.next == null) {
-            // do nothing
+        if (node == null || node.next == null) {
+            return node;
         }
 
-        // recursive case
+        // Recursive case
+        Node<T> middle = findMiddle(node);
+        Node<T> rightStart = middle.next;
+        middle.next = null;
 
-        else {
-            printList(node.next);
+        Node<T> l = mergeSort(node);
+        Node<T> r = mergeSort(rightStart);
+
+        return merge(l, r);
+    }
+
+    private Node<T> merge(Node<T> l, Node<T> r) {
+        Node<T> dummy = new Node<T>();
+        Node<T> tailMerge = dummy;
+
+        while (l != null && r != null) {
+            if (l.data.compareTo(r.data) <= 0) {
+                tailMerge.next = l;
+                l = l.next;
+            } else {
+                tailMerge.next = r;
+                r = r.next;
+            }
+
+            tailMerge = tailMerge.next;
         }
 
-        System.out.println(node.data.toString());
+        if (l != null) {
+            tailMerge.next = l;
+        } else if (r != null) {
+            tailMerge.next = r;
+        }
+        return dummy.next;
+    }
 
+    private Node<T> findMiddle(Node<T> start) {
+        Node<T> slow = start;
+        Node<T> fast = start;
 
+        while (fast.next != null && fast.next.next != null) {
+            slow = slow.next;
+            fast = fast.next.next;
+
+        }
+
+        return slow;
     }
 
     public void sort() {
