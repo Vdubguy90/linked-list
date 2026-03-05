@@ -315,4 +315,47 @@ public class ListTests {
         assertEquals(expected, actual);
     }
 
+    @Test
+    public void testMergeSortSize7() {
+        // Arrange
+        List<Integer> intList = new LinkedList<>();
+        intList.addLast(900);
+        intList.addLast(2);
+        intList.addLast(3);
+        intList.addLast(-3);
+        intList.addLast(0);
+        intList.addLast(3);
+        intList.addLast(7);
+
+        // Act
+        intList.sort();
+
+        // Assert
+        String expected = "[-3, 0, 2, 3, 3, 7, 900] size = 7, head: null, tail: 900";
+        String actual = intList.toString();
+
+        assertEquals(expected, actual);
+    }
+
+
+    @Test 
+    public void testMergeSortPerson() {
+        // Arrange
+        List<Person> people = new LinkedList<Person>();
+        people.addLast(new Person("Alice", 20));
+        people.addLast(new Person("Charlie", 21));
+        people.addLast(new Person("Bob", 19));
+
+        // Act
+        people.sort();
+
+        // Assert
+        String expected = "[Alice, 20, Bob, 19, Charlie, 21] size = 3, head: null, tail: Charlie, 21";
+        String actual = people.toString();
+
+        assertEquals(expected, actual);
+
+    }
+        
+
 }

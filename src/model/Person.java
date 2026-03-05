@@ -21,6 +21,10 @@ public class Person implements Comparable<Person> {
         }
     }
 
+    @Override
+    public String toString() {
+        return name + ", " + age;
+    }
 
 
 }

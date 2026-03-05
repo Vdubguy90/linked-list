@@ -255,6 +255,12 @@ public class LinkedList<T extends Comparable<T>> implements List<T> {
 
         // update the tail?
 
+        Node<T> cur = head;
+        while (cur.next != null) {
+            cur = cur.next;
+        }
+        tail = cur;
+
     }
 
     private Node<T> mergeSort(Node<T> node) {
