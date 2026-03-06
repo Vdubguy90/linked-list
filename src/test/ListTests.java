@@ -12,6 +12,8 @@ import static org.junit.jupiter.api.Assertions.assertThrows;
 
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
+import java.util.LinkedList;
+
 import list.*;
 import model.*;
 
@@ -280,7 +282,7 @@ public class ListTests {
         assertEquals("[B, A] size = 2, head: null, tail: A", list2.toString());
         assertEquals("[false, true, true] size = 3, head: null, tail: true", list3.toString());
     }
-
+    
 
     @Test 
     public void testMergesort() {

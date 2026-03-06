@@ -25,6 +25,5 @@ public interface List<T extends Comparable<T>> {
      */
     void sort();
 
->>>>>>> fcdd794 (commit to merge)
 
 }

@@ -17,7 +17,7 @@ public class App {
         intList.addLast(2);
         intList.addLast(3);
 
-        intList.printList();
+        //intList.printList();
 
 
         // System.out.println("intList: " + intList);

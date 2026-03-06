@@ -229,12 +229,18 @@ public class LinkedList<T extends Comparable<T>> implements List<T> {
         return 1 + countNodes(node.next);
     }
 
-    @Override
-    void sort() {
+    public void sort() {
 
         head.next = mergeSort(head.next);
-
+        
         // update tail?
+
+        Node<T> current = head;
+
+        while (current.next != null) {
+            current = current.next;
+        }
+        tail = current;
     }
 
     private Node<T> mergeSort(Node<T> node) {
